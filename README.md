@@ -16,7 +16,7 @@ I am using DSOX1204G oscilloscope. If you are using a different type of oscillos
 
 ---
 
-![UI Image](pictures\UI.png)
+![UI Image](pictures/UI.png)
 
 Above is the UI interface. I will explain how to use it step by step. 
 
@@ -65,10 +65,10 @@ To include more shallower peak, increae the threshold from 0.95 to 0.98 would gr
     As the name suggested, no correction would apply. This is not recommended. 
 ### fano resonance correction: FANO or FANOMZI
 This type of resonance is the result of two coupled oscillator. In the common Lorentzian case, we can think of it as a single oscillator and your driving frequency matches the oscillator natrual frequency. 
-![Fano Image](pictures\fano.png)
+![Fano Image](pictures/fano.png)
 
 Fano resonance happens as there are two modes coupling to each other. The plot above shows you the solution and also if you plot x1 v.s. w, thats what you got. The shape in green is called the fano resonance. On the oscilloscope, in the context of ring resonator, it look likes: 
-![Fano Image](pictures\fano_osc.png)
+![Fano Image](pictures/fano_osc.png)
 
 If you see this shape, please use FANO or FANOMZI. I recommend FANOMZI.
 
