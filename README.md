@@ -15,6 +15,74 @@ I am using DSOX1204G oscilloscope. If you are using a different type of oscillos
 2. array for trans
 
 ---
+Due to the chaotic nature of different oscilloscope vendors. I have to adapt my code according to different oscilloscopes. 
+ 
+DSOX_1204_G (in UCSB)
+DSOX_2012_A (in Caltech)
+Tektronix_MSO_3034 (in Caltech)
+MSOS_254_A (in Caltech)
+
+These four are guranteed to work and if you are also using these models, the only argument you need to change is the USB address for your oscilloscope. This could be found by in matlab: 
+
+    resources(oscilloscope())
+
+it should return you something like this: 
+
+    USB0::0x0957::0x1799::MY52011887::0::INSTR','AgInfiniiVision
+
+---
+
+In general, as long as you have downloaded all of the packages, one should be able to connect the oscilloscope using the default package as long as it is listed below: 
+
+'Driver: tektronix
+     Supported Models:
+        TDS200, TDS1000, TDS2000, TDS1000B, TDS2000B, TPS2000
+        TDS3000, TDS3000B, MSO4000, DPO4000, DPO7000, DPO70000B
+     
+     Driver: AgInfiniiVision
+     Supported Models:
+        DSO-X 2002A,DSO-X 2004A,DSO-X 2012A,DSO-X 2014A,DSO-X 2022A
+        DSO-X 2024A,MSO-X 2002A,MSO-X 2004A,MSO-X 2012A,MSO-X 2014A
+        MSO-X 2022A,MSO-X 2024A,DSO-X 3014A,DSO-X 3024A,DSO-X 3032A
+        DSO-X 3034A,DSO-X 3052A,DSO-X 3054A,MSO-X 3012A,MSO-X 3014A
+        MSO-X 3024A,MSO-X 3032A,MSO-X 3034A,MSO-X 3052A,MSO-X 3054A
+        DSO-X 3012A,MSO-X 3102A,MSO-X 3104A,DSO-X 3102A,DSO-X 3104A
+        DSO-X 3012T,DSO-X 3014T,DSO-X 3022T,DSO-X 3024T,DSO-X 3032T
+        DSO-X 3034T,DSO-X 3054T,DSO-X 3102T,DSO-X 3104T,MSO-X 3012T
+        MSO-X 3014T,MSO-X 3022T,MSO-X 3024T,MSO-X 3032T,MSO-X 3034T
+        MSO-X 3052T,MSO-X 3054T,MSO-X 3102T,MSO-X 3104T,DSO-X 3052T
+        MSO-X 3032G,MSO-X 3022G,DSO-X 3012G,DSO-X 3022G,DSO-X 3024G
+        DSO-X 3014G,DSO-X 3032G,DSO-X 3034G,DSO-X 3052G,DSO-X 3054G
+        DSO-X 3102G,DSO-X 3104G,MSO-X 3012G,MSO-X 3014G,MSO-X 3024G
+        MSO-X 3034G,MSO-X 3052G,MSO-X 3054G,MSO-X 3102G,MSO-X 3104G
+        DSO-X 4022A,DSO-X 4032A,DSO-X 4052A,DSO-X 4024A,DSO-X 4034A
+        DSO-X 4054A,DSO-X 4154A,MSO-X 4022A,MSO-X 4032A,MSO-X 4052A
+        MSO-X 4054A,MSO-X 4024A,MSO-X 4034A,MSO-X 4104A,MSO-X 4154A
+        DSO-X 4104A,MSO-X 6002A,MSO-X 6004A,DSO-X 6002A,DSO-X 6004A
+        M9241A,M9242A,M9243A,EDU-X 1002A,EDU-X 1002G,DSO-X 1102A
+        DSO-X 1102G,DSOX1204A,DSOX1204G,DSOX1202G,DSOX1202A
+        EDUX1052A,EDUX1052G,P9241A,P9242A,P9243A,C7312,C7312C,C7314
+        C7314C,C7322,C7322C,C7324,C7324C,C7332,C7332C,C7334,C7334C
+
+
+---
+
+The prerequiste to run all of them, regardless of the models: 
+
+    Curve Fitting Toolbox 23.2
+    
+    Instrument Control Toolbox 23.3
+    
+    Instrument Control Toolbox Support Package for Keysight IO Libraries and VISA Interface
+
+    Instrument Control Toolbox Support Package for National Instruments VISA and ICP Interfaces
+
+    Signal Processing Toolbox
+
+
+These are the necessary packages to run everything properly. 
+
+---
 
 ![UI Image](pictures/UI.png)
 
