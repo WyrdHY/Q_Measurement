@@ -31,7 +31,11 @@ it should return you something like this:
     USB0::0x0957::0x1799::MY52011887::0::INSTR','AgInfiniiVision
 
 ---
+Updated on 2024/8/6
+The MSOS_254_A_fano_V2 can return the parameters of fanoresonance when selected and it will also save a txt file additionally to record the exact fitting parameters. Files in this folder, though looks the same as files in the other folders, are actually different and cannot be used interchangeably.
 
+
+---
 In general, as long as you have downloaded all of the packages, one should be able to connect the oscilloscope using the default package as long as it is listed below: 
 
 'Driver: tektronix
