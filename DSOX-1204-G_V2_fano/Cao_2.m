@@ -31,7 +31,7 @@
 % Q_obj.plot_Q_max
 %   returns a figure handle with a fitting plot of the peak with maximum Q.
 % 
-classdef Cao
+classdef Cao_2
     
     properties
         trace_Q
@@ -75,7 +75,7 @@ classdef Cao
     end
     
     methods
-        function Q_obj=Cao(trace_Q,trace_MZI,MZI_FSR,lambda,threshold,corr_type,cutoff_freq) % constructor
+        function Q_obj=Cao_2(trace_Q,trace_MZI,MZI_FSR,lambda,threshold,corr_type,cutoff_freq) % constructor
 
             if nargin>=5 % determine the threshold for detection; clamped at 0.95 to avoid noise
                 threshold=min(threshold,0.995);
@@ -384,8 +384,8 @@ classdef Cao
                 Q_obj.x0 = Q_fit.x0;
                 Q_obj.F0 = Q_fit.F0;
                 Q_obj.ratio = F0/LS;
-                fprintf('Fitting Parameters: A=%.4f, LP=%.4f, LS=%.4f, x0=%.4f, F0=%.4f\n,F0/LS =%.4f', ...
-        Q_obj.A, Q_obj.LP, Q_obj.LS, Q_obj.x0, Q_obj.F0,Q_obj.ratio);
+                %fprintf('Fitting Parameters: A=%.4f, LP=%.4f, LS=%.4f, x0=%.4f, F0=%.4f\n,F0/LS =%.4f', ...
+        %Q_obj.A, Q_obj.LP, Q_obj.LS, Q_obj.x0, Q_obj.F0,Q_obj.ratio);
             catch 
                 a =1;
             end
