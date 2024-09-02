@@ -10,7 +10,7 @@ Its IP address is
 
 169.254.218.202       
 
-Once you have plugged the LAN cable to the computer, simply typing its IP address in the Internet Browser will allow you to see its spec.
+Once you have plugged the LAN cable to the computer, there should be a green icon appear on the top right corner on the screen of your oscilloscope. At this point, simply typing its IP address in the Internet Browser will allow you to see its spec.
 
 ![UI Image](pictures/RS.png)
 
