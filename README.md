@@ -1,6 +1,20 @@
 
 
 # Q Measurement
+---
+Update Notes on 09/01/2024
+
+I just add another oscilloscope model but using a TCPIP to connect to it. The oscilloscope is Rohde&Schwarz RTA4004. Its connection does not follow the tutorial below. Instead, it is connected using its IP address and the oscilloscope must be setted to Interface -- Ethernet to get it work. The communication is done by SCPI command, which you find a detaled connection tutorial from its manual. 
+
+Its IP address is 
+
+169.254.218.202       
+
+Once you have plugged the LAN cable to the computer, simply typing its IP address in the Internet Browser will allow you to see its spec.
+
+![UI Image](pictures/RS.png)
+
+---
 This code contains two files: 
 
     1. Cao.m: This file defines the method to fit the data and do the fitting
