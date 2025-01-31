@@ -18,6 +18,8 @@ function [x,y] = Rhode_Read_Waveform(channel)
 
     %Get the header for the selected channel 
     %This is used to determine the buffersize
+    fprintf(scope, 'FORM REAL');         % Set data format to REAL (floating point)
+    fprintf(scope, 'FORM:BORD LSBF');    % Set byte order to Little-Endian
     content = sprintf('CHAN%d:DATA:HEAD?',channel);
     disp(content);
     fprintf(scope, content);
