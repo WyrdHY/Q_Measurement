@@ -4,12 +4,15 @@
 ---
 Update Notes on 08/25/2026
 
+DSOX 2024A: This is the most recent and improved file. The connection is over USB and is done by VISA. The UI has been updated with "auto-plus-1" and useless panels have been reduced.
+---
+Update Notes on 08/24/2026
+
 Rohde&Schwarz RTA4004, Ethernet Connect:
 
 I added a different version: Rhode&Scharz RTA4004_Single Cap Version
 
 It is updated on 2026/08/25. When we used it to scan toptica 450nm, at 0.6hz scan rate, the usual code will experience an unequal return of list elements from mzi and trans. This version solves it by replacing the regular acquisition with a single acquistion. it will set osc back to continuous once finished taking the data.
-
 
 ---
 Update Notes on 09/01/2024
