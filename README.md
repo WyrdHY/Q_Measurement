@@ -2,6 +2,16 @@
 
 # Q Measurement
 ---
+Update Notes on 08/25/2026
+
+Rohde&Schwarz RTA4004, Ethernet Connect:
+
+I added a different version: Rhode&Scharz RTA4004_Single Cap Version
+
+It is updated on 2026/08/25. When we used it to scan toptica 450nm, at 0.6hz scan rate, the usual code will experience an unequal return of list elements from mzi and trans. This version solves it by replacing the regular acquisition with a single acquistion. it will set osc back to continuous once finished taking the data.
+
+
+---
 Update Notes on 09/01/2024
 
 I just add another oscilloscope model but using a TCPIP to connect to it. The oscilloscope is Rohde&Schwarz RTA4004. Its connection does not follow the tutorial below. Instead, it is connected using its IP address and the oscilloscope must be setted to Interface -- Ethernet to get it work. The communication is done by SCPI command, which you find a detaled connection tutorial from its manual. 
