@@ -2,6 +2,10 @@
 
 # Q Measurement
 ---
+Update Notes on 08/26/2026
+
+Rigol MSO has been included. Rigol takes a different way of SCPI command to return the data but i eventually get it to work.
+---
 Update Notes on 08/25/2026
 
 DSOX 2024A: This is the most recent and improved file. The connection is over USB and is done by VISA. The UI has been updated with "auto-plus-1" and useless panels have been reduced.

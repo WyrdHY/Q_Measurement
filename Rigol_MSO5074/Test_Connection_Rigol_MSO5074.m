@@ -4,36 +4,6 @@ figure;
 plot(x2,y2,'o-');hold on
 %plot(x3,y3,'o-');
 
-function [t, V] = Read_DOSX_2024A(channel)
-addr = "USB0::0x0957::0x1796::SG51290210::0::INSTR";
-scope = visadev(addr);
-scope.Timeout = 5;
-idn = writeread(scope,"*IDN?");
-disp(idn)
-writeline(scope,sprintf(":WAV:SOUR CHAN%d",channel));
-writeline(scope,":WAV:FORM WORD");
-writeline(scope,":WAV:UNS 0");
-writeline(scope,":WAV:BYT LSBF");
-writeline(scope,":WAV:POIN:MODE NORM");
-writeline(scope,":WAV:POIN MAX");
-% Preamble
-p = str2double(split(strtrim(writeread(scope,":WAV:PRE?")),","));
-xIncrement = p(5);
-xOrigin    = p(6);
-xReference = p(7);
-yIncrement = p(8);
-yOrigin    = p(9);
-yReference = p(10);
-% Waveform
-writeline(scope,":WAV:DATA?");
-raw = readbinblock(scope,"int16");
-flush(scope,"input");
-V = (double(raw)-yReference).*yIncrement + yOrigin;
-N = length(raw);
-t = ((0:N-1)-xReference).*xIncrement + xOrigin;
-t = t(:);
-V = V(:);
-end
 function [t, V] = Read_Rigol(channel)
 
 addr = "USB0::0x1AB1::0x0515::MS5A255207375::0::INSTR";
@@ -104,8 +74,7 @@ end
 
 % Convert waveform code to voltage
 
-V = (double(raw) - yReference) .* yIncrement + yOrigin;
-
+V = (double(raw) - yOrigin - yReference) .* yIncrement;
 % Generate time axis
 
 N = length(raw);
@@ -128,25 +97,25 @@ addr = "USB0::0x1AB1::0x0515::MS5A255207375::0::INSTR";
 scope = visadev(addr);
 scope.Timeout = 20;
 
-%% Check connection
+% Check connection
 idn = writeread(scope, "*IDN?");
 disp(idn)
 
-%% Stop acquisition
+% Stop acquisition
 writeline(scope, ":STOP");
 
-%% Get actual acquisition memory depth
+% Get actual acquisition memory depth
 points = str2double(writeread(scope, ":ACQ:MDEP?"));
 
 fprintf('Acquisition memory depth: %d points\n', points);
 
-%% Read CH2
+% Read CH2
 [x2, y2] = read_channel(scope, 2, points);
 
-%% Read CH3
+% Read CH3
 [x3, y3] = read_channel(scope, 3, points);
 
-%% Resume acquisition
+% Resume acquisition
 writeline(scope, ":RUN");
 
 end
@@ -154,16 +123,16 @@ end
 
 function [t, V] = read_channel(scope, channel, points)
 
-%% Waveform setup
+% Waveform setup
 writeline(scope, sprintf(":WAV:SOUR CHAN%d", channel));
 writeline(scope, ":WAV:MODE RAW");
 writeline(scope, ":WAV:FORM BYTE");
 
-%% Explicitly reset waveform range
+% Explicitly reset waveform range
 writeline(scope, ":WAV:STAR 1");
 writeline(scope, sprintf(":WAV:STOP %d", points));
 
-%% Read preamble
+% Read preamble
 p = str2double(split(strtrim(writeread(scope, ":WAV:PRE?")), ","));
 
 xIncrement = p(5);
@@ -176,7 +145,7 @@ yReference = p(10);
 
 fprintf('CH%d: reading %d points\n', channel, points);
 
-%% Read waveform in chunks
+% Read waveform in chunks
 chunkSize = 200000;
 
 raw = zeros(points, 1, 'uint8');
@@ -208,8 +177,7 @@ while idx <= points
 end
 
 %% Convert ADC code -> voltage
-V = (double(raw) - yReference) .* yIncrement + yOrigin;
-
+V = (double(raw) - yOrigin - yReference) .* yIncrement;
 %% Time axis
 N = length(raw);
 
